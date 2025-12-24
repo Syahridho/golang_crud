@@ -1,0 +1,67 @@
+<!-- Template untuk form update data employee yang sudah ada -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Menggunakan Tailwind CSS untuk styling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Update Employee</title>
+  </head>
+  <body>
+    <!-- Navigation bar dengan background gelap -->
+    <nav class="bg-slate-800 text-white px-8 py-4 font-bold md:px-12 xl:px-24">
+      <h1>Employee</h1>
+    </nav>
+    <!-- Form untuk update employee, action ke route update dengan ID employee -->
+    <form
+      action="/employee/update?id={{ .employee.Id }}"
+      method="POST"
+      class="container p-12 mx-auto flex flex-col gap-4"
+    >
+      <!-- Field untuk nama karyawan dengan nilai yang sudah ada -->
+      <div class="flex flex-col gap-2">
+        <label for="name">Nama Karyawan</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="border border-slate-800 rounded shadow px-2 py-1 text-md"
+          placeholder="Nama Kayawan"
+          value="{{ .employee.Name }}"
+        />
+      </div>
+      <!-- Field untuk NPWP dengan nilai yang sudah ada -->
+      <div class="flex flex-col gap-2">
+        <label for="npwp">NPWP</label>
+        <input
+          type="text"
+          id="npwp"
+          name="npwp"
+          class="border border-slate-800 rounded shadow px-2 py-1 text-md"
+          placeholder="NPWP"
+          value="{{ .employee.NPWP }}"
+        />
+      </div>
+      <!-- Field untuk alamat dengan nilai yang sudah ada -->
+      <div class="flex flex-col gap-2">
+        <label for="address">Alamat</label>
+        <textarea
+          id="address"
+          name="address"
+          class="border border-slate-800 rounded shadow px-2 py-1 text-md"
+          placeholder="Alamat anda"
+        >
+{{ .employee.Address }}</textarea
+        >
+      </div>
+      <!-- Tombol submit untuk mengupdate data -->
+      <button
+        type="submit"
+        class="bg-slate-800 text-white py-2 rounded shadow transition duration-500 cursor-pointer hover:bg-slate-700"
+      >
+        Edit
+      </button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!-- Template untuk menampilkan daftar semua employee -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Menggunakan Tailwind CSS untuk styling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>List Employee</title>
+  </head>
+  <body>
+    <!-- Navigation bar dengan background gelap -->
+    <nav class="bg-slate-800 text-white px-8 py-4 font-bold md:px-12 xl:px-24">
+      <h1>Employee</h1>
+    </nav>
+
+    <!-- Container utama untuk konten -->
+    <div class="container mx-auto mt-12">
+      <!-- Header dengan judul dan tombol tambah -->
+      <div class="flex justify-between mb-4">
+        <h1 class="font-bold">List Karyawan</h1>
+        <!-- Tombol untuk menambah employee baru -->
+        <a
+          href="/employee/create"
+          class="bg-slate-800 text-white p-2 rounded shadow"
+          >Tambahkan</a
+        >
+      </div>
+      <!-- Tabel untuk menampilkan data employee -->
+      <div
+        class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default"
+      >
+        <table class="w-full text-sm text-left rtl:text-right text-body">
+          <!-- Header tabel -->
+          <thead class="bg-neutral-secondary-soft border-b border-default">
+            <tr>
+              <th scope="col" class="px-6 py-3 font-medium">Nama</th>
+              <th scope="col" class="px-6 py-3 font-medium">NPWP</th>
+              <th scope="col" class="px-6 py-3 font-medium">Alamat</th>
+              <th scope="col" class="px-6 py-3 font-medium">Aksi</th>
+            </tr>
+          </thead>
+          <!-- Body tabel dengan data employee -->
+          <tbody>
+            <!-- Loop melalui semua employee yang dikirim dari controller -->
+            {{ range $index, $employee := .employees }}
+            <tr
+              class="odd:bg-neutral-primary even:bg-neutral-secondary-soft border-b border-default"
+            >
+              <!-- Nama employee -->
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-heading whitespace-nowrap"
+              >
+                {{ $employee.Name }}
+              </th>
+              <!-- NPWP employee -->
+              <td class="px-6 py-4">{{ $employee.NPWP }}</td>
+              <!-- Alamat employee -->
+              <td class="px-6 py-4">{{ $employee.Address }}</td>
+              <!-- Kolom aksi dengan tombol edit dan hapus -->
+              <td>
+                <!-- Link ke halaman update dengan ID employee -->
+                <a
+                  href="/employee/update?id={{ $employee.Id}}"
+                  class="py-1 px-2 rounded shadow bg-blue-500 text-white"
+                  >Edit</a
+                >
+                <!-- Link ke fungsi hapus dengan ID employee -->
+                <a
+                  href="/employee/delete?id={{ $employee.Id}}"
+                  class="py-1 px-2 rounded shadow bg-red-500 text-white"
+                  >Hapus</a
+                >
+              </td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

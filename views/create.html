@@ -1,0 +1,64 @@
+<!-- Template untuk form pembuatan employee baru -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Menggunakan Tailwind CSS untuk styling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>List Employee</title>
+  </head>
+  <body>
+    <!-- Navigation bar dengan background gelap -->
+    <nav class="bg-slate-800 text-white px-8 py-4 font-bold md:px-12 xl:px-24">
+      <h1>Employee</h1>
+    </nav>
+    <!-- Form untuk menambah employee baru -->
+    <form
+      action="/employee/create"
+      method="POST"
+      class="container p-12 mx-auto flex flex-col gap-4"
+    >
+      <!-- Field untuk nama karyawan -->
+      <div class="flex flex-col gap-2">
+        <label for="name">Nama Karyawan</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="border border-slate-800 rounded shadow px-2 py-1 text-md"
+          placeholder="Nama Kayawan"
+        />
+      </div>
+      <!-- Field untuk NPWP -->
+      <div class="flex flex-col gap-2">
+        <label for="npwp">NPWP</label>
+        <input
+          type="text"
+          id="npwp"
+          name="npwp"
+          class="border border-slate-800 rounded shadow px-2 py-1 text-md"
+          placeholder="NPWP"
+        />
+      </div>
+      <!-- Field untuk alamat -->
+      <div class="flex flex-col gap-2">
+        <label for="address">Alamat</label>
+        <textarea
+          type="text"
+          id="address"
+          name="address"
+          class="border border-slate-800 rounded shadow px-2 py-1 text-md"
+          placeholder="Alamat anda"
+        ></textarea>
+      </div>
+      <!-- Tombol submit untuk menyimpan data -->
+      <button
+        type="submit"
+        class="bg-slate-800 text-white py-2 rounded shadow transition duration-500 cursor-pointer hover:bg-slate-700"
+      >
+        Kirim
+      </button>
+    </form>
+  </body>
+</html>
